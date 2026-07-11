@@ -95,6 +95,37 @@ def main():
     # Gráfico
     print("\nMostrando gráfico...")
     visualizador.grafico_top_equipos()
+    print("\nTop 10 selecciones con más victorias:")
+
+    for equipo, victorias in gestor.equipo_con_mas_victorias()[:10]:
+        print(f"{equipo}: {victorias}")
+        print("\nPromedio de goles por partido:")
+
+        print(round(gestor.promedio_goles_por_partido(), 2))
+        print("\nPaíses sede con más partidos:")
+
+        print(gestor.pais_con_mas_partidos().head(10))
+        print("\nPartido con más goles en la historia del Mundial:")
+
+        print(
+            gestor.partido_con_mas_goles()[
+                [
+                    "date",
+                    "home_team",
+                    "away_team",
+                    "home_score",
+                    "away_score",
+                    "total_goles"
+                ]
+            ]
+        )
+        print("\nCantidad de selecciones:")
+
+        print(len(gestor.listar_equipos()))
+
+        print("\nPrimeras 20 selecciones:")
+
+        print(gestor.listar_equipos()[:20])
 
 
 if __name__ == "__main__":
