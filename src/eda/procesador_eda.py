@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 
 
 class ProcesadorEDA:
@@ -35,6 +36,9 @@ class ProcesadorEDA:
 
         return self.datos
 
+
+
+
     def limpiar_datos(self):
         """
         Elimina los registros con valores nulos.
@@ -42,3 +46,34 @@ class ProcesadorEDA:
         self.datos = self.datos.dropna()
 
         return self.datos
+
+    from pathlib import Path
+
+    def guardar_datos_procesados(self):
+        """
+        Guarda los datos procesados en la carpeta data/processed.
+        """
+
+        ruta = Path("data/processed/partidos_procesados.csv")
+
+        print("Guardando en:", ruta.resolve())
+
+        self.datos.to_csv(
+            ruta,
+            index=False,
+            encoding="utf-8"
+        )
+
+        print(f"Archivo procesado guardado en: {ruta}")
+        """
+        Guarda los datos procesados en la carpeta data/processed.
+        """
+        ruta = "data/processed/partidos_procesados.csv"
+
+        self.datos.to_csv(
+            ruta,
+            index=False,
+            encoding="utf-8"
+        )
+
+        print(f"\nArchivo procesado guardado en: {ruta}")

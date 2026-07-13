@@ -2,6 +2,7 @@ from src.ingesta.cargador_datos import CargadorDatos
 from src.gestor.gestor_partidos import GestorPartidos
 from src.eda.procesador_eda import ProcesadorEDA
 from src.visualizacion.visualizador import Visualizador
+from src.helpers.utilidades import Utilidades
 
 
 def main():
@@ -21,8 +22,8 @@ def main():
     visualizador = Visualizador(datos_mundial)
 
     # Información general
-    print("Cantidad total de partidos:")
-    print(gestor.total_partidos())
+    Utilidades.imprimir_titulo("Cantidad total de partidos")
+    print(Utilidades.formatear_numero(gestor.total_partidos()))
 
     print("\nColumnas disponibles:")
     print(gestor.listar_columnas())
@@ -78,6 +79,8 @@ def main():
     print(eda.resumen_descriptivo())
 
     eda.agregar_total_goles()
+    eda.guardar_datos_procesados()
+    print("YA PASÉ guardar_datos_procesados")
 
     print("\nPrimeros partidos con total de goles:")
     print(
