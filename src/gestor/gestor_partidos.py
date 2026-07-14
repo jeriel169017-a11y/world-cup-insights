@@ -118,8 +118,12 @@ class GestorPartidos:
         """
 
         equipos = sorted(
-            set(self.datos["home_team"]).union(
-                set(self.datos["away_team"])
+            set(
+                self.datos["home_team"].dropna().astype(str)
+            ).union(
+                set(
+                    self.datos["away_team"].dropna().astype(str)
+                )
             )
         )
 
